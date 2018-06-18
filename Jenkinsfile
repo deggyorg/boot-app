@@ -63,7 +63,7 @@ spec:
         stage('Gradle Build') {
             steps {
                 container('maven') {
-                    sh 'mvn clean test'
+                    sh 'mvn -B clean package'
                 }
             }
         }

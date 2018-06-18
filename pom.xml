@@ -8,9 +8,10 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.0.3.RELEASE</version>
 	</parent>
-	<artifactId>spring-boot-sample-web-ui</artifactId>
+	<artifactId>deggy-boot-app</artifactId>
 	<name>Spring Boot Web UI Sample</name>
 	<description>Spring Boot Web UI Sample</description>
+	<version>1.0</version>
 
 	<dependencies>
 		<!-- Compile -->
