@@ -60,7 +60,7 @@ spec:
                 }
             }
         }
-        stage('Gradle Build') {
+        stage('Maven Build') {
             steps {
                 container('maven') {
                     sh 'mvn -B clean package'
@@ -94,7 +94,7 @@ spec:
                         kubectlUpdateDeployment("${DEMO_SERVICE_NAME}", "${CI_IMAGE_NAME}")
 
                         // update ingress
-                        //kubectlDeploy('ingress', ["SERVICE_NAME=${DEMO_SERVICE_NAME}"])
+                        kubectlDeploy('ingress', ["SERVICE_NAME=${DEMO_SERVICE_NAME}"])
                     }
                 }
             }
