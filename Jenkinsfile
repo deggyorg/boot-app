@@ -2,7 +2,7 @@ pipeline {
 
   agent {
     kubernetes {
-      label 'k8s'
+      label 'k8s-org'
       defaultContainer 'jnlp'
       yaml """
 apiVersion: v1
@@ -47,16 +47,7 @@ spec:
         stage('Setup') {
             steps {
                 script {
-                    setBranchName()
-                    env.NAMESPACE         = sh returnStdout: true, script: 'cat /var/run/secrets/kubernetes.io/serviceaccount/namespace'
-                    env.APP_NAME          = 'deggy-boot-app'
-                    env.IMAGE_REPO        = 'timwebster9'
-                    env.IMAGE_BASE_NAME   = "${IMAGE_REPO}/${APP_NAME}"
-                    env.DEMO_IMAGE_NAME   = "${IMAGE_BASE_NAME}:${BUILD_BRANCH_NAME}"
-                    env.CI_IMAGE_NAME     = "${DEMO_IMAGE_NAME}-${BUILD_NUMBER}"
-                    env.CI_SERVICE_NAME   = "${APP_NAME}-${BUILD_BRANCH_NAME}-${BUILD_NUMBER}"
-                    env.CI_APP_URL        = "http://${CI_SERVICE_NAME}.${NAMESPACE}.svc.cluster.local"
-                    env.DEMO_SERVICE_NAME = "${APP_NAME}-${BUILD_BRANCH_NAME}"
+                    initialisePipeline('deggy-boot-app')
                 }
             }
         }
@@ -110,4 +101,5 @@ spec:
         }
     }
 }
+
 
