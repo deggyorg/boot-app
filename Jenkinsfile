@@ -47,6 +47,7 @@ spec:
         stage('Setup') {
             steps {
                 script {
+                    scmInfo()
                     initialisePipeline('deggy-boot-app')
                 }
             }
