@@ -13,6 +13,9 @@ node('mac') {
         scmInfo.each { k,v ->
             echo "key: ${k}, value: ${v}"
         }
+
+        def rgName = buildResourceGroupName()
+        echo "rg name: ${rgName}"
     }
 
 }
