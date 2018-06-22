@@ -5,7 +5,7 @@ node('mac') {
     }
 
     stage('Checkout') {
-        checkout scm
+        def scmInfo = checkout scm
 
         scmInfo.each { k,v ->
             echo "key: ${k}, value: ${v}"
