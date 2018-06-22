@@ -7,9 +7,6 @@ node('mac') {
     stage('Checkout') {
         checkout scm
 
-		echo "GIT_URL: ${scm.GIT_URL}"
-		echo "BRANCH_NAME: ${scm.BRANCH_NAME}"
-
         scmInfo.each { k,v ->
             echo "key: ${k}, value: ${v}"
         }
