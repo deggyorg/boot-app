@@ -14,7 +14,7 @@ spec:
   - host: ${INGRESS_DNS_NAME}
     http:
       paths:
-      - path: /
+      - path: /${SERVICE_NAME}
         backend:
           serviceName: ${SERVICE_NAME}
           servicePort: 80
