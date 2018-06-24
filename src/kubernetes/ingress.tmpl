@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ${SERVICE_NAME}-ingress
+  annotations:
+    kubernetes.io/tls-acme: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  tls:
+  - hosts:
+    - ${INGRESS_DNS_NAME}
+    secretName: tls-secret
+  rules:
+  - host: ${INGRESS_DNS_NAME}
+    http:
+      paths:
+      - path: /${SERVICE_NAME}
+        backend:
+          serviceName: ${SERVICE_NAME}
+          servicePort: 80
