@@ -4,7 +4,7 @@ metadata:
   name: ${SERVICE_NAME}-ingress
   annotations:
     kubernetes.io/tls-acme: "true"
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/rewrite-target: /${SERVICE_NAME}
 spec:
   tls:
   - hosts:
@@ -14,7 +14,7 @@ spec:
   - host: ${INGRESS_DNS_NAME}
     http:
       paths:
-      - path: /${SERVICE_NAME}
+      - path: /
         backend:
           serviceName: ${SERVICE_NAME}
           servicePort: 80
