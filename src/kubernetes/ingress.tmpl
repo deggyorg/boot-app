@@ -5,13 +5,14 @@ metadata:
   annotations:
     kubernetes.io/tls-acme: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/add-base-url: "true"
 spec:
   tls:
   - hosts:
-    - ${INGRESS_DNS_NAME}
+    - timw-aks-ingress.uksouth.cloudapp.azure.com
     secretName: tls-secret
   rules:
-  - host: ${INGRESS_DNS_NAME}
+  - host: timw-aks-ingress.uksouth.cloudapp.azure.com
     http:
       paths:
       - path: /${SERVICE_NAME}
