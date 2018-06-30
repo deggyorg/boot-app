@@ -5,7 +5,7 @@ metadata:
   annotations:
     kubernetes.io/tls-acme: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /
-    nginx.ingress.kubernetes.io/add-base-url: "true"
+    #nginx.ingress.kubernetes.io/add-base-url: "true"
 spec:
   tls:
   - hosts:
@@ -15,7 +15,7 @@ spec:
   - host: timw-aks-ingress.uksouth.cloudapp.azure.com
     http:
       paths:
-      - path: /${SERVICE_NAME}
+      - path: /${SERVICE_NAME}/
         backend:
           serviceName: ${SERVICE_NAME}
           servicePort: 80
